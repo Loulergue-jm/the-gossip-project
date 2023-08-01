@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get '/welcome/:name', to: 'welcome#welcome'
   root 'gossip#index'
   get '/root', to: 'gossip#index'
-  get '/gossip/:id', to: 'gossip#show_one', as: 'gossip'
-  post '/author/', to: 'gossip#author_info'
+  get '/gossip/:id', to: 'gossip#show', as: 'gossip'
+  get '/users/:id', to: 'users#show', as: 'user'
 end
