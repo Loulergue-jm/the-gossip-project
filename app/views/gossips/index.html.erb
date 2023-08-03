@@ -7,14 +7,14 @@
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h4 class="card-title"><%= gossip.title %></h4>
-      <h5 class="card-subtitle mb-2 text-body-secondary">Auteur: <%= gossip.user.first_name %>
+      <h5 class="card-subtitle mb-2 text-body-secondary">Auteur: <%= gossip.user.last_name %>
       <br/>
       <br/>
       <%= link_to("Voir le gossip", gossip_path(gossip.id), class:"btn btn-primary btn-sm") %></h5>
       <% if current_user && current_user.id == gossip.user_id %>
       <h5> <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-warning btn-sm">Editer </a></h5>
       <% end %>
-      <h6>User id #  <%=gossip.user_id%> </h6>
+      <h6>User id#  <%=gossip.user_id%>,   Gossip id# <%=gossip.id%></h6>
     </div>
   </div>
   <% end %>

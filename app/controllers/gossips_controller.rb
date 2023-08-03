@@ -14,12 +14,13 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: current_user.id)
+    @gossip = Gossip.new(title: params[:title], content: params[:content], user: current_user)
     if @gossip.save # essaie de sauvegarder en base @gossip
+
     flash[:notice] = "Parfait, enregistrement effectué"
     redirect_to gossips_path# si ça marche, il redirige vers la page d'index du site
     else
-    flash[:alert] = "Désolé, erreur rencontrée"
+    flash.now[:alert] = error_string(@gossip)
     render :new# sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end
   end
@@ -35,7 +36,7 @@ class GossipsController < ApplicationController
       flash[:notice] = "Parfait, modification effectuée"
       redirect_to gossip_path(@gossip.id)# si ça marche
     else
-      flash[:alert] = "Désolé, erreur rencontrée"
+      flash.now[:alert] = error_string(@gossip)
       render :edit# sinon, si ça ne marche pas
     end
   end
@@ -46,7 +47,7 @@ class GossipsController < ApplicationController
       flash[:notice] = "Suppression effectuée"
       redirect_to root_path
     else
-      flash[:alert] = "Désolé, erreur rencontrée"
+      flash.now[:alert] = error_string(@gossip)
       render :show# sinon, si ça ne marche pas
     end
   end
@@ -55,7 +56,7 @@ private
 
 def authenticate_user
   unless current_user
-    flash[:alert] = "Enregistres toi avant tout"
+    flash[:alert] = "Enregistre toi ou connecte toi avant tout"
     redirect_to new_session_path
   end
 end

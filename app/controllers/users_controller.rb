@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	end
 	def create
 		if params[:password]==params[:password2]
-
+		session.delete(:user_id)
 		@user = User.new(
 			email: params[:email], 
 			password: params[:password],
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:notice] = "Utilisateur ajouté"
 			redirect_to root_path
-		else flash[:alert] = "Création impossible"
+		else flash.now[:alert] = error_string(@user)
 			render :new
 		end
 		else

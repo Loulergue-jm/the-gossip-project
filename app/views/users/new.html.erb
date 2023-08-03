@@ -8,26 +8,25 @@
 <br/><br/>
 
 <div class="d-flex justify-content-center">
-<%= form_with(model: @user_path, url: users_path, method: "post", class:"card w-25 p-2", style:"gap:10px") do |form| %>
-<%= form.hidden_field :user  %>
-<%= form.label "email" %>
-<%= form.text_field :email %>
-<%= form.label "password" %>
-<%= form.text_field :password, placeholder:"password min 6 cars" %>
-<%= form.label "password2" %>
-<%= form.text_field :password2, placeholder:"repeat pswd..." %>
-<%= form.label "prénom" %>
-<%= form.text_field :first_name %>
-<%= form.label "nom" %>
-<%= form.text_field :last_name %>
-<%= form.label "ta description" %>
-<%= form.text_field :description, placeholder:"mini 5 cars" %>
-<%= form.label "ton age" %>
-<%= form.number_field :age %>
-<%= form.label "ta city_id" %>
-<%= form.number_field :city_id %>
+  <%= form_with(model: @user_path, url: users_path, method: "post", class:"card w-25 p-2", style:"gap:10px") do |form| %>
+  <%= form.hidden_field :user  %>
+  <%= form.label "email" %>
+  <%= form.text_field :email %>
+  <%= form.label "password" %>
+  <%= form.text_field :password, placeholder:"password min 6 cars" %>
+  <%= form.label "password2" %>
+  <%= form.text_field :password2, placeholder:"repeat pswd..." %>
+  <%= form.label "prénom" %>
+  <%= form.text_field :first_name %>
+  <%= form.label "nom" %>
+  <%= form.text_field :last_name %>
+  <%= form.label "ta description" %>
+  <%= form.text_field :description, placeholder:"mini 5 cars" %>
+  <%= form.label "ton age" %>
+  <%= form.number_field :age %>
+  <%= form.label "ta city_id" %>
+  <%= form.number_field :city_id %>
 
-<%= form.submit %>
-<% end %>
-
+  <%= form.submit "Créer"%>
+  <% end %>
 </div>
