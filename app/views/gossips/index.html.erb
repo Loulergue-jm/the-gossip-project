@@ -1,0 +1,21 @@
+<h1>Bienvenue sur le comérage en follie !</h1>
+<br/>
+<h4><%= link_to("Créer un gossip", new_gossip_path, class:"btn btn-success btn-sm text-center ms-3") %></h4>
+<br/>
+<div class="d-flex flex-wrap justify-content-center">
+  <% @gossips.reverse.each do |gossip| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h4 class="card-title"><%= gossip.title %></h4>
+      <h5 class="card-subtitle mb-2 text-body-secondary">Auteur: <%= gossip.user.first_name %>
+      <br/>
+      <br/>
+      <%= link_to("Voir le gossip", gossip_path(gossip.id), class:"btn btn-primary btn-sm") %></h5>
+      <% if current_user && current_user.id == gossip.user_id %>
+      <h5> <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-warning btn-sm">Editer </a></h5>
+      <% end %>
+      <h6>User id #  <%=gossip.user_id%> </h6>
+    </div>
+  </div>
+  <% end %>
+</div>

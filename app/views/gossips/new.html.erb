@@ -1,0 +1,11 @@
+<h3 class="text-center mt-5">Création d'un gossip</h3>
+
+<br/>
+<div class="d-flex justify-content-center">
+<%= form_tag url_for(action: 'create'), method: "post", class:"card w-25 p-2", style:"gap:10px" do %>
+  <%= text_field_tag 'title', @gossip.title, placeholder:"Titre...3 à 14 caractères" %>
+  <%= text_area_tag 'content', @gossip.content, placeholder:"Contenu ici..." %>
+  <%= submit_tag "Valider la saisie" %>
+<% end %>
+
+</div>

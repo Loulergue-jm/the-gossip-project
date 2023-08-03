@@ -1,15 +1,18 @@
-<h2>Bienvenue sur le gossip  # <%= @gossip.id %></h2>
+<h2>Page d'information de l'auteur <%= @user.first_name%>, <%= @user.last_name%> </h2>
 <br/>
-<h3>Voici le titre :
-<h3 class="card-title"><%= @gossip.title %></h3>
+<h4>Son email :</h4>
+<h3><%= @user.email %></h3>
 <br/>
-<h4>Voici l'auteur :</h4>
-<h3><%= @gossip.user.first_name %>,  <%= @gossip.user.last_name %> </h3>
-<%= link_to("Fiche de l'auteur", gossip_path(@gossip.user), class:"btn btn-primary") %>
+<h4>Son age :</h4>
+<h3><%= @user.age %></h3>
 <br/>
+<h4>Ce qui le décrit :</h4>
+<h3><%= @user.description %></h3>
 <br/>
-<h4>Voici le contenu :</h4>
-<h3><%= @gossip.content %></h3>
+<h4>Il/elle s'est enregistré(e) le :</h4>
+<h3><%= @user.created_at %></h3>
 <br/>
-<h4>Voici la date de création :</h4>
-<h3><%= @gossip.created_at %></h3>
+<h4>Il/elle occupe la ville :</h4>
+<h3><%= @user.city.name %></h3>
+<h4>City id #<%=@user.city.id%></h4>
+<h5> <a href="<%= city_path(@user.city.id) %>" class="btn btn-primary btn-sm">Voir la ville</a></h5>

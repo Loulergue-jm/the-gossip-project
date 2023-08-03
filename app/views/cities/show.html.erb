@@ -1,0 +1,28 @@
+<h2>Bienvenue sur ville  # <%= @city.id %></h2>
+<br/>
+<h3>Voici le nom de la ville :
+<h2 class="card-title"><%= @city.name %></h2>
+<br/>
+<h3>Voici son code postal :</h3>
+<h4><%= @city.zip_code %></h4>
+<br/>
+<br/>
+<h2 class="text-center">Voici les gossips rattachés à cette ville :</h2>
+<br/>
+<div class="d-flex flex-wrap justify-content-center">
+<% @users.each do |user| %>
+  <% user.gossips.each do |gossip| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h4 class="card-title"><%= gossip.title %></h4>
+      <h5 class="card-subtitle mb-2 text-body-secondary">Auteur: <%= gossip.user.first_name %>
+      <br/>
+      <br/>
+      <%= link_to("Voir le gossip", gossip_path(gossip.id), class:"btn btn-primary btn-sm") %></h5>
+      <h5> <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-warning btn-sm">Editer </a></h5>
+      <h6>User id #  <%=gossip.user_id%> </h6>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</div>

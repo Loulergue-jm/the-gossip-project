@@ -1,0 +1,38 @@
+<h3 class="text-center mt-5" >Bienvenue sur le gossip  # <%= @gossip.id %></h3>
+<br/>
+<div class="d-flex justify-content-center flex-column align-items-center">
+
+<% if current_user == @gossip.user %>
+<%= button_to 'Supprimer', gossip_path(@gossip), method: :delete, class: 'btn btn-danger btn-sm ms-3' %>
+<% end %>
+
+<% if current_user %>
+  <%= form_with(model: @comment, url: gossip_comments_path(@gossip), local: true) do |form| %>
+  <%= form.hidden_field :gossip_id, value: @gossip.id %>
+  <%= form.label "Nouveau commentaire ?" %>
+  <%= form.text_field :content %>
+  <%= form.submit "créer"%>
+  <% end %>
+<% end %>
+
+<% @gossip.comments.each do |comment| %>
+<div>
+<%= comment.content %>, <%= comment.user.last_name%> <%= comment.user.first_name%>
+</div>
+<% end %>
+
+<div class="card text-dark bg-warning mb-3" style="max-width: 30rem;">
+  <div class="card-body">
+    <h2 class="card-title"><%= @gossip.title %></h2>
+    <h5 class="card-subtitle mb-2 text-muted"><%= @gossip.user.first_name %>,  <%= @gossip.user.last_name %></h5>
+    <h4 class="card-text"><%= @gossip.content %></h4>
+    </br>
+    <p class="card-text"><%= @gossip.created_at %></p>
+    <p class="card-text">Liens Ville Auteur</p>
+    <div class="fs-4">
+    <a href="<%= city_path(@gossip.user.city) %>" class="card-link">"<%= @gossip.user.city.name %>"</a>
+    <a href="<%= user_path(@gossip.user.id) %>" class="card-link">"<%= @gossip.user.last_name %>"</a>
+    </div>
+  </div>
+</div>
+</div>
