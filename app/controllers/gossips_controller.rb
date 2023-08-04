@@ -32,11 +32,11 @@ class GossipsController < ApplicationController
   def update
     @gossip = Gossip.find(params[:id])
     post_params = params.require(:gossip).permit(:title, :content)
-    if @gossip.update(post_params)
+    if  @gossip.user == current_user && @gossip.update(post_params)
       flash[:notice] = "Parfait, modification effectuée"
       redirect_to gossip_path(@gossip.id)# si ça marche
     else
-      flash.now[:alert] = error_string(@gossip)
+      flash.now[:alert] = if (error_string(@gossip).empty?) then "impossible de mettre à jour" else error_string(@gossip) end
       render :edit# sinon, si ça ne marche pas
     end
   end

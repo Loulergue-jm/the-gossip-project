@@ -1,6 +1,6 @@
 require 'faker'
 require 'table_print'
-=begin
+
 City.destroy_all
 Gossip.destroy_all
 Tag.destroy_all
@@ -58,8 +58,9 @@ Gossip.all.each do |elem|
         tag: Tag.order('RANDOM()').last,
     )
 end
-=end
+=begin
 tp City.all, :id, :name, :zip_code
 gets.chomp 
 tp User.all, :id, :last_name, :email, :age, :city
 gets.chomp
+=end
