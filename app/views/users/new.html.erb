@@ -8,14 +8,13 @@
 <br/><br/>
 
 <div class="d-flex justify-content-center">
-  <%= form_with(model: @user_path, url: users_path, method: "post", class:"card w-25 p-2", style:"gap:10px") do |form| %>
-  <%= form.hidden_field :user  %>
+  <%= form_with(model: @user, url: users_path, method: "post", class:"card w-25 p-2", style:"gap:10px") do |form| %>
   <%= form.label "email" %>
   <%= form.text_field :email %>
   <%= form.label "password" %>
   <%= form.password_field :password, placeholder:"password min 6 cars"  %>
   <%= form.label "password2" %>
-  <%= form.password_field :password2, placeholder:"repeat pswd..." %>
+  <%= form.password_field :password_confirmation, placeholder:"repeat pswd..." %>
   <%= form.label "prénom" %>
   <%= form.text_field :first_name %>
   <%= form.label "nom" %>

@@ -7,16 +7,21 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 	def create
-		if params[:password]==params[:password2]
+		p "&" *50
+		p params
+		p params[:user]
+		p "&" *50
+
+		if params[:user][:password] == params[:user][:password_confirmation]
 		session.delete(:user_id)
 		@user = User.new(
-			email: params[:email], 
-			password: params[:password],
-			first_name: params[:first_name],
-			last_name: params[:last_name],
-			description: params[:description],
-			age: params[:age],
-			city_id: params[:city_id]
+			email: params[:user][:email], 
+			password: params[:user][:password],
+			first_name: params[:user][:first_name],
+			last_name: params[:user][:last_name],
+			description: params[:user][:description],
+			age: params[:user][:age],
+			city_id: params[:user][:city_id]
 		)
 		if @user.save
 			flash[:notice] = "Utilisateur ajouté"
