@@ -12,10 +12,10 @@
   <%= form.hidden_field :user  %>
   <%= form.label "email" %>
   <%= form.text_field :email %>
-  <%= form.label "password", type="password" %>
-  <%= form.text_field :password, placeholder:"password min 6 cars"  %>
+  <%= form.label "password" %>
+  <%= form.password_field :password, placeholder:"password min 6 cars"  %>
   <%= form.label "password2" %>
-  <%= form.text_field :password2, placeholder:"repeat pswd..." %>
+  <%= form.password_field :password2, placeholder:"repeat pswd..." %>
   <%= form.label "prénom" %>
   <%= form.text_field :first_name %>
   <%= form.label "nom" %>
@@ -24,9 +24,8 @@
   <%= form.text_field :description, placeholder:"mini 5 cars" %>
   <%= form.label "ton age" %>
   <%= form.number_field :age %>
-  <%= form.label "ta city_id" %>
-  <%= form.number_field :city_id %>
-
+ <label for="city_id">"ta ville":</label>
+  <%= select_tag 'user[city_id]', options_for_select( City.all.collect { |city| [city.name, city.id]}) %>
   <%= form.submit "Créer"%>
   <% end %>
 </div>

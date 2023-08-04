@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-center">
   <%= form_tag url_for(action: 'create'), method: "post", class:"card w-25 p-2", style:"gap:10px" do %>
   <%= text_field_tag('email', :email, placeholder:"e-mail...") %>
-  <%= text_field_tag('password', :password, placeholder:"password...") %>
+  <%= password_field_tag('password', :password, placeholder:"password...") %>
   <%= submit_tag "Connexion" %>
   <% end %>
 </div>
