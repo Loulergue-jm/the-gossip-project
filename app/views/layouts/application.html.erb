@@ -10,27 +10,26 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body data-turbo="false" class="bg-info">
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href=<%= root_path %>>Menu principal</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href=<%= root_path %>>Menu principal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href=<%= new_user_path %>>S'enregistrer</a>
-      <a class="nav-item nav-link" href="/contact">Contact</a>
-      <a class="nav-item nav-link" href="/team">Team</a>
-      <% if current_user %>
-        <%= button_to "Se déconnecter", session_path(session.id), method: :delete, class:"nav-item nav-link" %>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href=<%= new_user_path %>>S'enregistrer</a>
+        <a class="nav-item nav-link" href="/contact">Contact</a>
+        <a class="nav-item nav-link" href="/team">Team</a>
+        <% if current_user %>
+          <%= button_to "Se déconnecter", session_path(session.id), method: :delete, class:"nav-item nav-link" %>
         <% else %>
-        <a class="nav-item nav-link" href="<%= new_session_path %>">Se connecter</a>
-      <% end %>
-
+          <a class="nav-item nav-link" href="<%= new_session_path %>">Se connecter</a>
+        <% end %>
+      </div>
     </div>
-    </div>
-    </nav>
-  </header>
+  </nav>
+</header>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
